@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Offer list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Campaignname</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Imagepath</th>
+                <th>Prepay</th>
+                <th>Payonvalidate</th>
+                <th>Fixedamount</th>
+                <th>Percentage</th>
+                <th>Redeemarsforvalidation</th>
+                <th>Redeemarprice</th>
+                <th>Redeemarsused</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offer in offers %}
+            <tr>
+                <td><a href="{{ path('offer_show', { 'id': offer.id }) }}">{{ offer.id }}</a></td>
+                <td>{{ offer.campaignName }}</td>
+                <td>{% if offer.startDate %}{{ offer.startDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if offer.endDate %}{{ offer.endDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ offer.imagePath }}</td>
+                <td>{% if offer.prepay %}Yes{% else %}No{% endif %}</td>
+                <td>{% if offer.payOnValidate %}Yes{% else %}No{% endif %}</td>
+                <td>{{ offer.fixedAmount }}</td>
+                <td>{{ offer.percentage }}</td>
+                <td>{{ offer.redeemarsForValidation }}</td>
+                <td>{{ offer.redeemarPrice }}</td>
+                <td>{{ offer.redeemarsUsed }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('offer_show', { 'id': offer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('offer_edit', { 'id': offer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('offer_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

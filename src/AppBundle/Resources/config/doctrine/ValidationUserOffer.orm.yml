@@ -1,0 +1,38 @@
+AppBundle\Entity\ValidationUserOffer:
+    type: entity
+    table: validation_user_offer
+    indexes:
+        fk_validation_user_id:
+            columns:
+                - validation_user_id
+        fk_offer_id:
+            columns:
+                - offer_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        validationUser:
+            targetEntity: ValidatorUser
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                validation_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        offer:
+            targetEntity: Offer
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                offer_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,50 @@
+AppBundle\Entity\ValidatorUserLog:
+    type: entity
+    table: validator_user_log
+    indexes:
+        idx_location_id:
+            columns:
+                - location_id
+        idx_date:
+            columns:
+                - date
+        idx_offer_id:
+            columns:
+                - offer_id
+        idx_user_id:
+            columns:
+                - user_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        offerId:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: offer_id
+        userId:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: user_id
+        amount:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+        locationId:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: location_id
+        date:
+            type: datetime
+            nullable: false
+            default: CURRENT_TIMESTAMP
+    lifecycleCallbacks: {  }

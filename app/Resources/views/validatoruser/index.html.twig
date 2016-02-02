@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ValidatorUser list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Ipad</th>
+                <th>Charge</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for validatorUser in validatorUsers %}
+            <tr>
+                <td><a href="{{ path('validatoruser_show', { 'id': validatorUser.id }) }}">{{ validatorUser.id }}</a></td>
+                <td>{{ validatorUser.name }}</td>
+                <td>{{ validatorUser.email }}</td>
+                <td>{{ validatorUser.phone }}</td>
+                <td>{{ validatorUser.ipad }}</td>
+                <td>{{ validatorUser.charge }}</td>
+                <td>{% if validatorUser.active %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('validatoruser_show', { 'id': validatorUser.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('validatoruser_edit', { 'id': validatorUser.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('validatoruser_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
