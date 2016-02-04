@@ -42,4 +42,60 @@ class ValidationUserOffer
     private $offer;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set validationUser
+     *
+     * @param \AppBundle\Entity\ValidatorUser $validationUser
+     * @return ValidationUserOffer
+     */
+    public function setValidationUser(\AppBundle\Entity\ValidatorUser $validationUser = null)
+    {
+        $this->validationUser = $validationUser;
+
+        return $this;
+    }
+
+    /**
+     * Get validationUser
+     *
+     * @return \AppBundle\Entity\ValidatorUser 
+     */
+    public function getValidationUser()
+    {
+        return $this->validationUser;
+    }
+
+    /**
+     * Set offer
+     *
+     * @param \AppBundle\Entity\Offer $offer
+     * @return ValidationUserOffer
+     */
+    public function setOffer(\AppBundle\Entity\Offer $offer = null)
+    {
+        $this->offer = $offer;
+
+        return $this;
+    }
+
+    /**
+     * Get offer
+     *
+     * @return \AppBundle\Entity\Offer 
+     */
+    public function getOffer()
+    {
+        return $this->offer;
+    }
 }
