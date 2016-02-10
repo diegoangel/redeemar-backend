@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="uidx_username", columns={"username"}), @ORM\UniqueConstraint(name="uidx_email", columns={"email"})}, indexes={@ORM\Index(name="idx_active", columns={"active"}), @ORM\Index(name="fk_role_id", columns={"role_id"})})
  * @ORM\Entity
  */
-class User extends BaseUser
+class User
 {
     /**
      * @var integer
