@@ -45,6 +45,7 @@ local.properties
  
 # phpstorm
 .idea/
+.phpidea
  
 # textmate
 *.tmproj
