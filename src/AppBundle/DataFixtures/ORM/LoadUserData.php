@@ -33,6 +33,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
     public function load(ObjectManager $manager)
     {
 
+        /**
+         * @var $objectManager Original object manager stored 
+         * for being passed to the Faker Populate class
+         */
         $objectManager = $manager;
 
         $testPassword = '123';
