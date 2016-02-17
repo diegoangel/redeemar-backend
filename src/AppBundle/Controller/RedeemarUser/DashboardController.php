@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Offer;
+use AppBundle\Entity\OfferRepository;
 
 /**
  * @Route("/redeemar", name="redeemar")

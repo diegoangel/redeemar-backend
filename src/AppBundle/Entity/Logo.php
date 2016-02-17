@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Logo
  *
  * @ORM\Table(name="logo", uniqueConstraints={@ORM\UniqueConstraint(name="uidx_company_name", columns={"company_name"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\LogoRepository")
  */
 class Logo
 {
