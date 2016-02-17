@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Owner;
+namespace AppBundle\Controller\SystemAdmin;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Offer;
 
 /**
- * @Route("/owner", name="owner")
+ * @Route("/system", name="system")
  */
 class DashboardController extends Controller
 {
     /**
-     * @Route("/dashboard", name="owner_dashboard")
+     * @Route("/dashboard", name="system_dashboard")
      */
     public function indexAction(Request $request)
     {
@@ -22,7 +22,7 @@ class DashboardController extends Controller
 
         $offers = $em->getRepository('AppBundle:Offer')->findAll();
 
-        return $this->render('AppBundle:Owner:Dashboard:index.html.twig', array(
+        return $this->render('AppBundle:System:Dashboard:index.html.twig', array(
             'offers' => $offers,
         ));
     }
