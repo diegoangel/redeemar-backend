@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Owner</h1>
+	{{ knp_menu_render('main') }}
+    <h1>Owner {{ app.user.email }}</h1>
 {% endblock %}
