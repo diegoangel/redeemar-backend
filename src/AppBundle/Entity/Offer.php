@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Offer
  *
- * @ORM\Table(name="offer", indexes={@ORM\Index(name="idx_campaign_name", columns={"campaign_name"}), @ORM\Index(name="idx_start_date", columns={"start_date"}), @ORM\Index(name="idx_end_date", columns={"end_date"})})
+ * @ORM\Table(name="offer", indexes={@ORM\Index(name="fk_campaign_id", columns={"campaign_id"}), @ORM\Index(name="idx_start_date", columns={"start_date"}), @ORM\Index(name="idx_end_date", columns={"end_date"})})
  * @ORM\Entity(repositoryClass="AppBundle\Entity\OfferRepository")
  */
 class Offer
@@ -20,13 +20,6 @@ class Offer
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="campaign_name", type="string", length=255, nullable=false)
-     */
-    private $campaignName;
 
     /**
      * @var \DateTime
@@ -98,6 +91,16 @@ class Offer
      */
     private $redeemarsUsed;
 
+    /**
+     * @var \AppBundle\Entity\Campaign
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Campaign")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="campaign_id", referencedColumnName="id")
+     * })
+     */
+    private $campaign;
+
 
 
     /**
@@ -108,29 +111,6 @@ class Offer
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set campaignName
-     *
-     * @param string $campaignName
-     * @return Offer
-     */
-    public function setCampaignName($campaignName)
-    {
-        $this->campaignName = $campaignName;
-
-        return $this;
-    }
-
-    /**
-     * Get campaignName
-     *
-     * @return string 
-     */
-    public function getCampaignName()
-    {
-        return $this->campaignName;
     }
 
     /**
@@ -362,4 +342,27 @@ class Offer
     {
         return $this->redeemarsUsed;
     }
+
+    /**
+     * Set campaign
+     *
+     * @param \AppBundle\Entity\Campaign $campaign
+     * @return Offer
+     */
+    public function setCampaign(\AppBundle\Entity\Campaign $campaign = null)
+    {
+        $this->campaign = $campaign;
+
+        return $this;
+    }
+
+    /**
+     * Get campaign
+     *
+     * @return \AppBundle\Entity\Campaign 
+     */
+    public function getCampaign()
+    {
+        return $this->campaign;
+    }    
 }
