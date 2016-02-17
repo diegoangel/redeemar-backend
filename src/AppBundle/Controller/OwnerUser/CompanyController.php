@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\OwnerUSer;
+namespace AppBundle\Controller\OwnerUser;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
