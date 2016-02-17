@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\SystemUser;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,7 +12,7 @@ use AppBundle\Form\UserType;
 /**
  * User controller.
  *
- * @Route("/user")
+ * @Route("/system/user")
  */
 class UserController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\OwnerUser;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,7 +12,7 @@ use AppBundle\Form\InvoiceType;
 /**
  * Invoice controller.
  *
- * @Route("/invoice")
+ * @Route("/owner/invoice")
  */
 class InvoiceController extends Controller
 {

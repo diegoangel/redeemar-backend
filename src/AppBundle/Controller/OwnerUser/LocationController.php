@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\OwnerUser;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,7 +12,7 @@ use AppBundle\Form\LocationType;
 /**
  * Location controller.
  *
- * @Route("/location")
+ * @Route("/owner/location")
  */
 class LocationController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\OwnerUser;
+namespace AppBundle\Controller\SystemUser;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,7 +13,7 @@ use AppBundle\Form\LogoType;
 /**
  * Logo controller.
  *
- * @Route("/owner/logo")
+ * @Route("/system/logo")
  */
 class LogoController extends Controller
 {

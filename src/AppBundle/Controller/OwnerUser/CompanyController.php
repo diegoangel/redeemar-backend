@@ -12,7 +12,7 @@ use AppBundle\Form\CompanyType;
 /**
  * Company controller.
  *
- * @Route("/company")
+ * @Route("/owner/company")
  */
 class CompanyController extends Controller
 {
