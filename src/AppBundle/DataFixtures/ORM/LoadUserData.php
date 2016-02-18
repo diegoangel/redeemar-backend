@@ -113,7 +113,12 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $populator->addEntity('AppBundle:Category', 3);
         $populator->addEntity('AppBundle:Logo', 5);
         $populator->addEntity('AppBundle:Company', 5);
-        $populator->addEntity('AppBundle:Location', 5);        
+        $populator->addEntity('AppBundle:Location', 5);
+
+        $populator->addEntity('AppBundle:Offer', 5, array(
+            'fixedAmount' => function() { return 20.00; },
+            'redeemarPrice' => function() { return 20.00; }
+        ));
 
         $populator->execute();  
 
