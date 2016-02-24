@@ -85,12 +85,6 @@ class OfferDatatable extends AbstractDatatableView
             ->add('id', 'column', array(
                 'title' => 'Id',
             ))
-            ->add('startDate', 'datetime', array(
-                'title' => 'StartDate',
-            ))
-            ->add('endDate', 'datetime', array(
-                'title' => 'EndDate',
-            ))
             ->add('imagePath', 'column', array(
                 'title' => 'ImagePath',
             ))
@@ -115,11 +109,29 @@ class OfferDatatable extends AbstractDatatableView
             ->add('redeemarsUsed', 'column', array(
                 'title' => 'RedeemarsUsed',
             ))
+            ->add('active', 'boolean', array(
+                'title' => 'Active',
+            ))
+            ->add('startDate', 'datetime', array(
+                'title' => 'StartDate',
+            ))
+            ->add('endDate', 'datetime', array(
+                'title' => 'EndDate',
+            ))
             ->add('campaign.id', 'column', array(
                 'title' => 'Campaign Id',
             ))
             ->add('campaign.name', 'column', array(
                 'title' => 'Campaign Name',
+            ))
+            ->add('campaign.startDate', 'column', array(
+                'title' => 'Campaign StartDate',
+            ))
+            ->add('campaign.endDate', 'column', array(
+                'title' => 'Campaign EndDate',
+            ))
+            ->add('campaign.active', 'column', array(
+                'title' => 'Campaign Active',
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
