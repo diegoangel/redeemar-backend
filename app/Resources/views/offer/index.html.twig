@@ -7,7 +7,6 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Campaignname</th>
                 <th>Startdate</th>
                 <th>Enddate</th>
                 <th>Imagepath</th>
@@ -25,7 +24,6 @@
         {% for offer in offers %}
             <tr>
                 <td><a href="{{ path('offer_show', { 'id': offer.id }) }}">{{ offer.id }}</a></td>
-                <td>{{ offer.campaignName }}</td>
                 <td>{% if offer.startDate %}{{ offer.startDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if offer.endDate %}{{ offer.endDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ offer.imagePath }}</td>

@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Company
  *
- * @ORM\Table(name="company", uniqueConstraints={@ORM\UniqueConstraint(name="uidx_name", columns={"name"})}, indexes={@ORM\Index(name="fk_user_id", columns={"user_id"}), @ORM\Index(name="fk_category_id", columns={"category_id"}), @ORM\Index(name="fk_logo_id", columns={"logo_id"})})
+ * @ORM\Table(name="company", uniqueConstraints={@ORM\UniqueConstraint(name="uidx_name", columns={"name"})}, indexes={@ORM\Index(name="fk_user_id", columns={"user_id"}), @ORM\Index(name="fk_category_id", columns={"category_id"})})
  * @ORM\Entity
  */
 class Company
@@ -60,7 +60,7 @@ class Company
     /**
      * @var \AppBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
@@ -78,16 +78,25 @@ class Company
     private $category;
 
     /**
-     * @var \AppBundle\Entity\Logo
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Logo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="logo_id", referencedColumnName="id")
-     * })
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Logo", mappedBy="company")
      */
-    private $logo;
+    private $logos;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Campaign", mappedBy="company")
+     */
+    private $campaigns;
 
 
+
+    /**
+     * Constructor
+     */
+    public function __construct() 
+    {
+        $this->campaigns = new ArrayCollection();
+        $this->logos = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -261,25 +270,70 @@ class Company
     }
 
     /**
-     * Set logo
+     * Add logo
      *
      * @param \AppBundle\Entity\Logo $logo
+     *
      * @return Company
      */
-    public function setLogo(\AppBundle\Entity\Logo $logo = null)
+    public function addLogo(\AppBundle\Entity\Logo $logo)
     {
-        $this->logo = $logo;
+        $this->logos[] = $logo;
 
         return $this;
     }
 
     /**
-     * Get logo
+     * Remove logo
      *
-     * @return \AppBundle\Entity\Logo 
+     * @param \AppBundle\Entity\Logo $logo
      */
-    public function getLogo()
+    public function removeLogo(\AppBundle\Entity\Logo $logo)
     {
-        return $this->logo;
+        $this->logos->removeElement($logo);
+    }
+
+    /**
+     * Get logos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLogos()
+    {
+        return $this->logos;
+    }
+
+    /**
+     * Add campaign
+     *
+     * @param \AppBundle\Entity\Campaign $campaign
+     *
+     * @return Company
+     */
+    public function addCampaign(\AppBundle\Entity\Campaign $campaign)
+    {
+        $this->campaigns[] = $campaign;
+
+        return $this;
+    }
+
+    /**
+     * Remove campaign
+     *
+     * @param \AppBundle\Entity\Campaign $campaign
+     */
+    public function removeCampaign(\AppBundle\Entity\Campaign $campaign)
+    {
+        $this->campaigns->removeElement($campaign);
+    }
+
+    /**
+     * Get campaigns
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCampaigns()
+    {
+        return $this->campaigns;
     }
 }

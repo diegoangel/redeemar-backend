@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Logo
  *
- * @ORM\Table(name="logo", uniqueConstraints={@ORM\UniqueConstraint(name="uidx_company_name", columns={"company_name"})})
+ * @ORM\Table(name="logo")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\LogoRepository")
  */
 class Logo
@@ -24,9 +24,9 @@ class Logo
     /**
      * @var string
      *
-     * @ORM\Column(name="company_name", type="string", length=100, nullable=false)
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
-    private $companyName;
+    private $description;
 
     /**
      * @var string
@@ -34,6 +34,16 @@ class Logo
      * @ORM\Column(name="path", type="string", length=255, nullable=false)
      */
     private $path;
+
+    /**
+    * @var \AppBundle\Entity\Company
+    *
+    * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\Company", inversedBy="logos")
+    * @ORM\JoinColumns({
+    *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+    * })
+    */
+    private $company;
 
 
 
@@ -45,29 +55,6 @@ class Logo
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set companyName
-     *
-     * @param string $companyName
-     * @return Logo
-     */
-    public function setCompanyName($companyName)
-    {
-        $this->companyName = $companyName;
-
-        return $this;
-    }
-
-    /**
-     * Get companyName
-     *
-     * @return string 
-     */
-    public function getCompanyName()
-    {
-        return $this->companyName;
     }
 
     /**
@@ -91,5 +78,53 @@ class Logo
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Logo
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set company
+     *
+     * @param \AppBundle\Entity\Company $company
+     *
+     * @return Logo
+     */
+    public function setCompany(\AppBundle\Entity\Company $company = null)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return \AppBundle\Entity\Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
     }
 }

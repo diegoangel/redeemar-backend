@@ -7,11 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Offer
  *
- * @ORM\Table(name="offer", indexes={@ORM\Index(name="fk_campaign_id", columns={"campaign_id"}), @ORM\Index(name="idx_start_date", columns={"start_date"}), @ORM\Index(name="idx_end_date", columns={"end_date"})})
+ * @ORM\Table(name="offer", indexes={@ORM\Index(name="fk_campaign_id", columns={"campaign_id"})})
  * @ORM\Entity(repositoryClass="AppBundle\Entity\OfferRepository")
  */
 class Offer
 {
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+
     /**
      * @var integer
      *
@@ -20,20 +23,6 @@ class Offer
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="start_date", type="datetime", nullable=false)
-     */
-    private $startDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="end_date", type="datetime", nullable=false)
-     */
-    private $endDate;
 
     /**
      * @var string
@@ -94,12 +83,33 @@ class Offer
     /**
      * @var \AppBundle\Entity\Campaign
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Campaign")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Campaign", inversedBy="offers")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="campaign_id", referencedColumnName="id")
      * })
      */
     private $campaign;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=false)
+     */
+    private $active = self::STATUS_ACTIVE;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date", type="datetime", nullable=true)
+     */
+    private $startDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="datetime", nullable=true)
+     */
+    private $endDate;
 
 
 
@@ -111,52 +121,6 @@ class Offer
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set startDate
-     *
-     * @param \DateTime $startDate
-     * @return Offer
-     */
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    /**
-     * Get startDate
-     *
-     * @return \DateTime 
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * Set endDate
-     *
-     * @param \DateTime $endDate
-     * @return Offer
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    /**
-     * Get endDate
-     *
-     * @return \DateTime 
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
     }
 
     /**

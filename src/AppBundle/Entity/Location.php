@@ -3,15 +3,19 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Location
  *
  * @ORM\Table(name="location", indexes={@ORM\Index(name="fk_company_id", columns={"company_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\LocationRepository")
  */
 class Location
 {
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+
     /**
      * @var integer
      *
@@ -54,7 +58,7 @@ class Location
      *
      * @ORM\Column(name="active", type="boolean", nullable=false)
      */
-    private $active;
+    private $active = self::STATUS_ACTIVE;
 
     /**
      * @var float
@@ -71,20 +75,6 @@ class Location
     private $latitude;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created", type="datetime", nullable=false)
-     */
-    private $created;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="modified", type="datetime", nullable=false)
-     */
-    private $modified;
-
-    /**
      * @var \AppBundle\Entity\Company
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company")
@@ -94,7 +84,20 @@ class Location
      */
     private $company;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Campaign", mappedBy="locations")
+     */
+    private $campaigns;  
 
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->campaigns = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -268,52 +271,6 @@ class Location
     }
 
     /**
-     * Set created
-     *
-     * @param \DateTime $created
-     * @return Location
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \DateTime 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set modified
-     *
-     * @param \DateTime $modified
-     * @return Location
-     */
-    public function setModified($modified)
-    {
-        $this->modified = $modified;
-
-        return $this;
-    }
-
-    /**
-     * Get modified
-     *
-     * @return \DateTime 
-     */
-    public function getModified()
-    {
-        return $this->modified;
-    }
-
-    /**
      * Set company
      *
      * @param \AppBundle\Entity\Company $company
@@ -334,5 +291,39 @@ class Location
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Add campaign
+     *
+     * @param \AppBundle\Entity\Campaign $campaign
+     *
+     * @return Location
+     */
+    public function addCampaign(\AppBundle\Entity\Campaign $campaign)
+    {
+        $this->campaigns[] = $campaign;
+
+        return $this;
+    }
+
+    /**
+     * Remove campaign
+     *
+     * @param \AppBundle\Entity\Campaign $campaign
+     */
+    public function removeCampaign(\AppBundle\Entity\Campaign $campaign)
+    {
+        $this->campaigns->removeElement($campaign);
+    }
+
+    /**
+     * Get campaigns
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCampaigns()
+    {
+        return $this->campaigns;
     }
 }

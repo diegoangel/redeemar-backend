@@ -24,6 +24,7 @@ class MenuBuilder
 
         $menu->setChildrenAttribute('class', 'nav navbar-nav');
         $menu->addChild('Home', array('route' => 'homepage'));
+        $menu->addChild('Dashboard', array('route' => 'redeemar_dashboard'));
 
         // ... add more children
 

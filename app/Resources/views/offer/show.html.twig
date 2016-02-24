@@ -10,10 +10,6 @@
                 <td>{{ offer.id }}</td>
             </tr>
             <tr>
-                <th>Campaignname</th>
-                <td>{{ offer.campaignName }}</td>
-            </tr>
-            <tr>
                 <th>Startdate</th>
                 <td>{% if offer.startDate %}{{ offer.startDate|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
