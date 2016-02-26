@@ -28,9 +28,9 @@
         "components/jquery": "1.11.3",
         "datatables/datatables": "1.10.10",
         "moment/moment": "2.10.6",
-        "friendsofsymfony/jsrouting-bundle": "@stable",
+        "friendsofsymfony/jsrouting-bundle": "^1.6",
         "sg/datatablesbundle": "v0.8",
-        "fzaninotto/faker": "^1.5"      
+        "fzaninotto/faker": "^1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

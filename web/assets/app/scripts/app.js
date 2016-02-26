@@ -10,7 +10,6 @@
 angular
 .module('redeemar', [
     'config',
-    'ui.bootstrap',
     'ngAnimate',
     'ngSanitize',
     'ngTouch'

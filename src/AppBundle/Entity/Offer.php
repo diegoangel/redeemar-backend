@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,8 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Offer
 {
-    const STATUS_INACTIVE = 0;
-    const STATUS_ACTIVE = 1;
+    const OFF = 0;
+    const ON = 1;
 
     /**
      * @var integer
@@ -95,7 +96,7 @@ class Offer
      *
      * @ORM\Column(name="active", type="boolean", nullable=false)
      */
-    private $active = self::STATUS_ACTIVE;
+    private $active = self::ON;
 
     /**
      * @var \DateTime
@@ -111,6 +112,19 @@ class Offer
      */
     private $endDate;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="highlighted", type="boolean", nullable=false)
+     */
+    private $highlighted = self::OFF;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rating", type="decimal", precision=1, scale=1, nullable=true)
+     */
+    private $rating;
 
 
     /**
@@ -329,4 +343,124 @@ class Offer
     {
         return $this->campaign;
     }    
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return Offer
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     *
+     * @return Offer
+     */
+    public function setStartDate(DateTime $startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     *
+     * @return Offer
+     */
+    public function setEndDate(DateTime $endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * Set highlighted
+     *
+     * @param boolean $highlighted
+     *
+     * @return Offer
+     */
+    public function setHighlighted($highlighted)
+    {
+        $this->highlighted = $highlighted;
+
+        return $this;
+    }
+
+    /**
+     * Get highlighted
+     *
+     * @return boolean
+     */
+    public function getHighlighted()
+    {
+        return $this->highlighted;
+    }
+
+    /**
+     * Set rating
+     *
+     * @param string $rating
+     *
+     * @return Offer
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating
+     *
+     * @return string
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
 }

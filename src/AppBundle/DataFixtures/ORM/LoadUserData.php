@@ -17,6 +17,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
 
+    const PASSWORD_DEFAULT = 123;
+
     /**
      * @var ContainerInterface
      */
@@ -38,8 +40,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
          * for being passed to the Faker Populate class
          */
         $objectManager = $manager;
-
-        $testPassword = '123';
         
         $factory = $this->container->get('security.encoder_factory');
         
@@ -58,7 +58,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $systemUser->setName('System User');
         $systemUser->setRoles(array('ROLE_ADMIN'));
         $encoder = $factory->getEncoder($systemUser);
-        $password = $encoder->encodePassword($testPassword, $systemUser->getSalt());
+        $password = $encoder->encodePassword(self::PASSWORD_DEFAULT, $systemUser->getSalt());
         $systemUser->setPassword($password);
 
         $manager->updateUser($systemUser);
@@ -66,59 +66,166 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $this->addReference('system-user', $systemUser);
 
         /** Owner User */
-        $ownerUser = $manager->createUser();
-
-        $ownerUser->setUsername('owneruser');
-        $ownerUser->setUsernameCanonical('owneruser'); 
-        $ownerUser->setEmail('diegoangel@hotmail.com'); 
-        $ownerUser->setEmailCanonical('diegoangel@hotmail.com'); 
-        $ownerUser->setEnabled(true); 
-        $ownerUser->setName('Owner User');
-        $ownerUser->setRoles(array('ROLE_OWNER'));
-        $encoder = $factory->getEncoder($ownerUser);
-        $password = $encoder->encodePassword($testPassword, $ownerUser->getSalt());
-        $ownerUser->setPassword($password);
-
-        $manager->updateUser($ownerUser);
-
-        $this->addReference('owner-user', $ownerUser);
-
-        /** Redeemar User */
 
         $faker = \Faker\Factory::create();
         $faker->seed(1234);
 
-        for ($i = 0; $i < 10; $i++)
-        {
+        $populator = new \Faker\ORM\Doctrine\Populator($faker, $objectManager);
+
+        /**
+         * Category Entity
+         */
+        $fakeCategories = ['Gastronomy', 'Electronics', 'Beauty'];
+        $populator->addEntity('AppBundle:Category', 3, [
+            'name' => function() use($fakeCategories) { 
+                return $this->getRandomElementFromArray($fakeCategories); 
+            }, 
+        ]);
+
+        for ($i = 1; $i <= 5; $i++) {
+            $ownerUser = $manager->createUser();
+
+            $username = 'owner' . $i;
+            $ownerUser->setUsername($username);
+            $ownerUser->setUsernameCanonical($username); 
+            $ownerUser->setEmail($username . '@example.org'); 
+            $ownerUser->setEmailCanonical($username . '@example.org'); 
+            $ownerUser->setEnabled(true); 
+            $ownerUser->setName($faker->Name);
+            $ownerUser->setRoles(array('ROLE_OWNER'));
+            $encoder = $factory->getEncoder($ownerUser);
+            $password = $encoder->encodePassword(self::PASSWORD_DEFAULT, $ownerUser->getSalt());
+            $ownerUser->setPassword($password);
+
+            $manager->updateUser($ownerUser);
+            
+            $this->addReference('owner-user' . $i, $ownerUser);
+        }
+
+        /** Redeemar User */
+
+        for ($i = 1; $i <= 5; $i++) {
             $redeemarUser = $manager->createUser();
 
-            $fakeUsername = $faker->userName;
-            $redeemarUser->setUsername($fakeUsername);
-            $ownerUser->setUsernameCanonical($fakeUsername);
-            $fakeEmail = $faker->email;
-            $redeemarUser->setEmail($fakeEmail);
-            $redeemarUser->setEmailCanonical($fakeEmail);            
+            $username = 'redeemar' . $i;
+            $redeemarUser->setUsername($username);
+            $ownerUser->setUsernameCanonical($username);
+            $redeemarUser->setEmail($username . '@example.org');
+            $redeemarUser->setEmailCanonical($username . '@example.org');            
             $redeemarUser->setEnabled(true);
             $redeemarUser->setName($faker->Name);
             $redeemarUser->setRoles(array('ROLE_REDEEMAR_USER'));
             $encoder = $factory->getEncoder($redeemarUser);
-            $password = $encoder->encodePassword($testPassword, $redeemarUser->getSalt());
+            $password = $encoder->encodePassword(self::PASSWORD_DEFAULT, $redeemarUser->getSalt());
             $redeemarUser->setPassword($password);
 
             $manager->updateUser($redeemarUser);
-
         }
 
-        $populator = new \Faker\ORM\Doctrine\Populator($faker, $objectManager);
-        $populator->addEntity('AppBundle:Category', 3);
-        $populator->addEntity('AppBundle:Logo', 5);
-        $populator->addEntity('AppBundle:Company', 5);
-        $populator->addEntity('AppBundle:Location', 5);
+        /**
+         * Company Entity
+         */
+        $elementsPositions = [1, 2, 3, 4, 5];
+        $populator->addEntity('AppBundle:Company', 5, [
+            'user' => function() use ($faker) { 
+                $position = $faker->unique()->numberBetween(1, 5);
+                return $this->getReference('owner-user' . $position); 
+            },
+            'name' => function() use ($faker) { 
+                return $faker->unique()->company(); 
+            },
+            'website' => function() use ($faker) { 
+                return $faker->url(); 
+            },
+            'video' => 'https://www.youtube.com/watch?v=SwN4LgOw6mo',
+        ]);
 
-        $populator->addEntity('AppBundle:Offer', 5, array(
-            'fixedAmount' => function() { return 20.00; },
-            'redeemarPrice' => function() { return 20.00; }
-        ));
+        /**
+         * Logo Entity
+         */
+        $populator->addEntity('AppBundle:Logo', 5, [
+            'path' => function() use ($faker) { 
+                return $faker->image($dir = '/tmp', $width = 640, $height = 480); 
+            },
+        ]); 
+        
+        /**
+         * Campaign Entity
+         */
+        $populator->addEntity('AppBundle:Campaign', 3, [
+            'name' => function() use ($faker) { 
+                return $faker->unique()->catchPhrase(); 
+            },
+            'startDate' => function() use ($faker) { 
+                return $faker->dateTimeBetween($startDate = '-30 days', $endDate = '+30 days'); 
+            },
+            'endDate' => function() use ($faker) { 
+                return $faker->dateTimeBetween($startDate = '-30 days', $endDate = '+30 days'); 
+            },
+        ]);
+
+        /**
+         * Location Entity
+         */       
+        $populator->addEntity('AppBundle:Location', 5, [
+            'name' => function() use ($faker) { 
+                return $faker->unique()->company(); 
+            },
+            'contact' => function() use ($faker) { 
+                return $faker->unique()->name(); 
+            },
+            'latitude' => function() use ($faker) { 
+                return $faker->latitude($min = 40, $max = 45); 
+            },
+            'longitude' => function() use ($faker) { 
+                return $faker->longitude($min = 73, $max = 79); 
+            },
+        ]);
+
+        /**
+         * Offer Entity
+         */
+        $populator->addEntity('AppBundle:Offer', 10, [
+            'startDate' => function() use ($faker) { 
+                return $faker->dateTime('now'); 
+            },
+            'endDate' => function() use ($faker) { 
+                return $faker->dateTime('+3 days'); 
+            },
+            'redeemarsUsed' => function() use ($faker) { 
+                return $faker->numberBetween($min = 1, $max = 60); 
+            },
+            'redeemarsForValidation' => function() use ($faker) { 
+                return $faker->numberBetween($min = 70, $max = 200); 
+            },
+            'percentage' => function() use ($faker) { 
+                return $faker->numberBetween($min = 1, $max = 30); 
+            },
+            'imagePath' => function() use ($faker) { 
+                return $faker->image($dir = '/tmp', $width = 640, $height = 480); 
+            },            
+            'fixedAmount' => function() use ($faker) { 
+                return $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100); 
+            },
+            'redeemarPrice' => function() use ($faker) { 
+                return $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100); 
+            },
+        ]);
+
+        /**
+         * Validator User Entity
+         */
+        $populator->addEntity('AppBundle:ValidatorUser', 10, [
+            'charge' => function() {
+                return 'Manager';
+            },
+            'name' => function() use ($faker) {
+                return $faker->Name;
+            },
+            'ipad' => function() use ($faker) {
+                return 1;
+            },
+        ]);
 
         $populator->execute();  
 
@@ -129,9 +236,24 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
      *
      * @return integer
      */
-    function getOrder()
+    public function getOrder()
     {
         return 1;
     }
 
+    /**
+     * Randomize an array and return one element
+     *
+     * @param $array array
+     *
+     * @return mixed
+     */
+    private function getRandomElementFromArray($array = [])
+    {
+        if (empty($array)) {
+            return 'Dummy value';
+        }
+
+        return $array[array_rand($array)];
+    }
 }

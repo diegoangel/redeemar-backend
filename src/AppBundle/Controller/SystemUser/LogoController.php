@@ -20,7 +20,7 @@ class LogoController extends Controller
     /**
      * Lists all Logo entities.
      *
-     * @Route("/", name="logo_index")
+     * @Route("/", name="system_logo_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -37,7 +37,7 @@ class LogoController extends Controller
     /**
      * Creates a new Logo entity.
      *
-     * @Route("/new", name="logo_new")
+     * @Route("/new", name="system_logo_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -63,7 +63,7 @@ class LogoController extends Controller
     /**
      * Finds and displays a Logo entity.
      *
-     * @Route("/{id}", name="logo_show")
+     * @Route("/{id}", name="system_logo_show")
      * @Method("GET")
      */
     public function showAction(Logo $logo)
@@ -79,7 +79,7 @@ class LogoController extends Controller
     /**
      * Displays a form to edit an existing Logo entity.
      *
-     * @Route("/{id}/edit", name="logo_edit")
+     * @Route("/{id}/edit", name="system_logo_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Logo $logo)
@@ -106,7 +106,7 @@ class LogoController extends Controller
     /**
      * Deletes a Logo entity.
      *
-     * @Route("/{id}", name="logo_delete")
+     * @Route("/{id}", name="system_logo_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Logo $logo)

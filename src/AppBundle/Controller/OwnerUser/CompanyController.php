@@ -19,7 +19,7 @@ class CompanyController extends Controller
     /**
      * Lists all Company entities.
      *
-     * @Route("/", name="company_index")
+     * @Route("/", name="owner_company_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class CompanyController extends Controller
     /**
      * Creates a new Company entity.
      *
-     * @Route("/new", name="company_new")
+     * @Route("/new", name="owner_company_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -62,7 +62,7 @@ class CompanyController extends Controller
     /**
      * Finds and displays a Company entity.
      *
-     * @Route("/{id}", name="company_show")
+     * @Route("/{id}", name="owner_company_show")
      * @Method("GET")
      */
     public function showAction(Company $company)
@@ -78,7 +78,7 @@ class CompanyController extends Controller
     /**
      * Displays a form to edit an existing Company entity.
      *
-     * @Route("/{id}/edit", name="company_edit")
+     * @Route("/{id}/edit", name="owner_company_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Company $company)
@@ -105,7 +105,7 @@ class CompanyController extends Controller
     /**
      * Deletes a Company entity.
      *
-     * @Route("/{id}", name="company_delete")
+     * @Route("/{id}", name="owner_company_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Company $company)

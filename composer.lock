@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "712ac7498dc5972df9cbcd0125d65382",
-    "content-hash": "234c51cc7503c7109a4d8fb9a7bd5ae5",
+    "hash": "bd5ab1eb464412f7436cedae34744238",
+    "content-hash": "814fc9fb5d210bf87192e4d80ce985cd",
     "packages": [
         {
             "name": "components/jquery",
@@ -3406,8 +3406,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20,
-        "friendsofsymfony/jsrouting-bundle": 0
+        "friendsofsymfony/user-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

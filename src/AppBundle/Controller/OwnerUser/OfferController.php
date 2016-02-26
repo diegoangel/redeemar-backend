@@ -19,24 +19,45 @@ class OfferController extends Controller
     /**
      * Lists all Offer entities.
      *
-     * @Route("/", name="offer_index")
+     * @Route("/", name="owner_offer_index")
      * @Method("GET")
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        // $em = $this->getDoctrine()->getManager();
 
-        $offers = $em->getRepository('AppBundle:Offer')->findAll();
+        // $offers = $em->getRepository('AppBundle:Offer')->findAll();
+
+        // return $this->render('offer/index.html.twig', array(
+        //     'offers' => $offers,
+        // ));
+        $datatable = $this->get('app.datatable.offer');
+        $datatable->buildDatatable();
 
         return $this->render('offer/index.html.twig', array(
-            'offers' => $offers,
+            'datatable' => $datatable,
         ));
+    }
+
+    /**
+     * @Route("/results", name="owner_offer_results")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexResultsAction()
+    {
+        $datatable = $this->get('app.datatable.offer');
+        $datatable->buildDatatable();
+
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
 
     /**
      * Creates a new Offer entity.
      *
-     * @Route("/new", name="offer_new")
+     * @Route("/new", name="owner_offer_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -62,7 +83,7 @@ class OfferController extends Controller
     /**
      * Finds and displays a Offer entity.
      *
-     * @Route("/{id}", name="offer_show")
+     * @Route("/{id}", name="owner_offer_show", options={"expose"=true})
      * @Method("GET")
      */
     public function showAction(Offer $offer)
@@ -78,7 +99,7 @@ class OfferController extends Controller
     /**
      * Displays a form to edit an existing Offer entity.
      *
-     * @Route("/{id}/edit", name="offer_edit")
+     * @Route("/{id}/edit", name="owner_offer_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Offer $offer)
@@ -105,7 +126,7 @@ class OfferController extends Controller
     /**
      * Deletes a Offer entity.
      *
-     * @Route("/{id}", name="offer_delete")
+     * @Route("/{id}", name="owner_offer_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Offer $offer)

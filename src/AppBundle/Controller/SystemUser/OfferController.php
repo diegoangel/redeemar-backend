@@ -19,7 +19,7 @@ class OfferController extends Controller
     /**
      * Lists all Offer entities.
      *
-     * @Route("/", name="offer_index")
+     * @Route("/", name="system_offer_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class OfferController extends Controller
     /**
      * Creates a new Offer entity.
      *
-     * @Route("/new", name="offer_new")
+     * @Route("/new", name="system_offer_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -62,7 +62,7 @@ class OfferController extends Controller
     /**
      * Finds and displays a Offer entity.
      *
-     * @Route("/{id}", name="offer_show")
+     * @Route("/{id}", name="system_offer_show")
      * @Method("GET")
      */
     public function showAction(Offer $offer)
@@ -78,7 +78,7 @@ class OfferController extends Controller
     /**
      * Displays a form to edit an existing Offer entity.
      *
-     * @Route("/{id}/edit", name="offer_edit")
+     * @Route("/{id}/edit", name="system_offer_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Offer $offer)
@@ -105,7 +105,7 @@ class OfferController extends Controller
     /**
      * Deletes a Offer entity.
      *
-     * @Route("/{id}", name="offer_delete")
+     * @Route("/{id}", name="system_offer_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Offer $offer)

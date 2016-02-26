@@ -10,7 +10,7 @@ use AppBundle\Entity\Offer;
 use AppBundle\Entity\OfferRepository;
 
 /**
- * @Route("/redeemar", name="redeemar")
+ * @Route("/redeemar")
  */
 class DashboardController extends Controller
 {

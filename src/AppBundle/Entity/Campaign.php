@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -13,8 +14,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Campaign
 {
-    const STATUS_INACTIVE = 0;
-    const STATUS_ACTIVE = 1;
+    const OFF = 0;
+    const ON = 1;
 
     /**
      * @var integer
@@ -76,7 +77,7 @@ class Campaign
      *
      * @ORM\Column(name="active", type="boolean", nullable=false)
      */
-    private $active = self::STATUS_ACTIVE;
+    private $active = self::ON;
 
 
 

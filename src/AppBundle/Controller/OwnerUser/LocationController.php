@@ -19,7 +19,7 @@ class LocationController extends Controller
     /**
      * Lists all Location entities.
      *
-     * @Route("/", name="location_index")
+     * @Route("/", name="owner_location_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class LocationController extends Controller
     /**
      * Creates a new Location entity.
      *
-     * @Route("/new", name="location_new")
+     * @Route("/new", name="owner_location_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -62,7 +62,7 @@ class LocationController extends Controller
     /**
      * Finds and displays a Location entity.
      *
-     * @Route("/{id}", name="location_show")
+     * @Route("/{id}", name="owner_location_show")
      * @Method("GET")
      */
     public function showAction(Location $location)
@@ -78,7 +78,7 @@ class LocationController extends Controller
     /**
      * Displays a form to edit an existing Location entity.
      *
-     * @Route("/{id}/edit", name="location_edit")
+     * @Route("/{id}/edit", name="owner_location_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Location $location)
@@ -105,7 +105,7 @@ class LocationController extends Controller
     /**
      * Deletes a Location entity.
      *
-     * @Route("/{id}", name="location_delete")
+     * @Route("/{id}", name="owner_location_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Location $location)

@@ -19,7 +19,7 @@ class InvoiceController extends Controller
     /**
      * Lists all Invoice entities.
      *
-     * @Route("/", name="invoice_index")
+     * @Route("/", name="owner_invoice_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class InvoiceController extends Controller
     /**
      * Creates a new Invoice entity.
      *
-     * @Route("/new", name="invoice_new")
+     * @Route("/new", name="owner_invoice_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -62,7 +62,7 @@ class InvoiceController extends Controller
     /**
      * Finds and displays a Invoice entity.
      *
-     * @Route("/{id}", name="invoice_show")
+     * @Route("/{id}", name="owner_invoice_show")
      * @Method("GET")
      */
     public function showAction(Invoice $invoice)
@@ -78,7 +78,7 @@ class InvoiceController extends Controller
     /**
      * Displays a form to edit an existing Invoice entity.
      *
-     * @Route("/{id}/edit", name="invoice_edit")
+     * @Route("/{id}/edit", name="owner_invoice_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Invoice $invoice)
@@ -105,7 +105,7 @@ class InvoiceController extends Controller
     /**
      * Deletes a Invoice entity.
      *
-     * @Route("/{id}", name="invoice_delete")
+     * @Route("/{id}", name="owner_invoice_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Invoice $invoice)
