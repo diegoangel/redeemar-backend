@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
         $offers = $em->getRepository('AppBundle:Offer')->findAll();
 
-        return $this->render('AppBundle:SystemUser:Dashboard/index.html.twig', array(
+        return $this->render('AppBundle:SystemUser:dashboard/index.html.twig', array(
             'offers' => $offers,
         ));
     }

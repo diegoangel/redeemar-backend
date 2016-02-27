@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Offer list</h1>
+
+    {{ datatable_render(datatable) }}
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('owner_offer_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

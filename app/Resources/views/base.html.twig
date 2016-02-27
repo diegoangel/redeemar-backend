@@ -8,32 +8,31 @@
         <title>{% block title %}Redeemar{% endblock %}</title>
         {% block stylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" href="{{ asset('/assets/vendor/bootstrap/dist/css/bootstrap-theme.min.css') }}" />  
-        <link rel="stylesheet" href="{{ asset('/assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}" /> 
-        <link rel="stylesheet" href="{{ asset('/assets/vendor/font-awesome/css/font-awesome.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('/assets/vendor/bootstrap-daterangepicker/daterangepicker.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bower_components/bootstrap/dist/css/bootstrap-theme.min.css') }}" />  
+        <link rel="stylesheet" href="{{ asset('/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" /> 
+        <link rel="stylesheet" href="{{ asset('/bower_components/font-awesome/css/font-awesome.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" />
         <link rel="stylesheet" href="https://cdn.datatables.net/s/bs-3.3.5/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,b-print-1.1.0,r-2.0.0/datatables.min.css">
-        <link rel="stylesheet" href="{{ asset('/assets/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css') }}" />        
-        <link rel="stylesheet" href="{{ asset('/assets/app/styles/custom.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bower_components/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css') }}" />        
+        <link rel="stylesheet" href="{{ asset('/bundles/app/styles/custom.css') }}" />
         {% endblock %}
- 
         {% block javascripts %}
-        <script src="{{ asset('/assets/vendor/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('/assets/vendor/moment/min/moment-with-locales.min.js') }}"></script>
-        <script src="{{ asset('/assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('/assets/vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+        <script src="{{ asset('/bower_components/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/moment/min/moment-with-locales.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
         <script src="https://cdn.datatables.net/s/bs-3.3.5/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.10,b-1.1.0,b-colvis-1.1.0,b-flash-1.1.0,b-html5-1.1.0,b-print-1.1.0,r-2.0.0/datatables.min.js"></script>
-        <script src="{{ asset('/assets/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
         <!-- // AngularJS dependencies -->
-        <script src="{{ asset('/assets/vendor/angular/angular.min.js') }}"></script>
-        <script src="{{ asset('/assets/vendor/angular-animate/angular-animate.min.js') }}"></script>
-        <script src="{{ asset('/assets/vendor/angular-touch/angular-touch.min.js') }}"></script>
-        <script src="{{ asset('/assets/vendor/angular-sanitize/angular-sanitize.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/angular/angular.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/angular-animate/angular-animate.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/angular-touch/angular-touch.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/angular-sanitize/angular-sanitize.min.js') }}"></script>
         <!-- // Project related scripts -->
-        <script src="{{ asset('/assets/app/scripts/config.js') }}"></script>        
-        <script src="{{ asset('/assets/app/scripts/app.js') }}"></script>
+        <script src="{{ asset('/bundles/app/scripts/config.js') }}"></script>        
+        <script src="{{ asset('/bundles/app/scripts/app.js') }}"></script>
         {% endblock %}       
     </head>
     <body>
