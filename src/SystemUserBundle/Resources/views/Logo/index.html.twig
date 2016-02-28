@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Logo list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Companyname</th>
+                <th>Path</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for logo in logos %}
+            <tr>
+                <td><a href="{{ path('logo_show', { 'id': logo.id }) }}">{{ logo.id }}</a></td>
+                <td>{{ logo.companyName }}</td>
+                <td>{{ logo.path }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('logo_show', { 'id': logo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('logo_edit', { 'id': logo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('logo_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

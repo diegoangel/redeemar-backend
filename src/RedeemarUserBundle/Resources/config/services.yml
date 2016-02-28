@@ -1,0 +1,12 @@
+services:
+      app.menu_builder:
+        class: RedeemarUserBundle\DependencyInjection\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+        tags:
+          - { name: knp_menu.menu_builder, method: createMainMenu, alias: main } # The alias is what is used to retrieve the menu
+          - { name: knp_menu.menu_builder, method: createSidebarMenu, alias: sidebar } # Named "sidebar" this time
+
+      app.datatable.offer:
+          class: RedeemarUserBundle\Datatables\OfferDatatable
+          tags:
+              - { name: sg.datatable.view }
