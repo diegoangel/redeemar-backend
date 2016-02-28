@@ -1,5 +1,6 @@
 {
     "name": "diego/redeemar-backend",
+    "description": "Redeemar Backend",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -28,7 +29,9 @@
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "sg/datatablesbundle": "v0.8",
         "fzaninotto/faker": "^1.5",
-        "stof/doctrine-extensions-bundle": "^1.2"
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "symfony/proxy-manager-bridge": "^2.8",
+        "ocramius/proxy-manager": "~1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

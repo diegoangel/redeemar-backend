@@ -1,5 +1,20 @@
-app:
-    resource: "@AppBundle/Controller/"
+home:
+    resource: "@HomeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+owner_user:
+    resource: "@OwnerUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+redeemar_user:
+    resource: "@RedeemarUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+system_user:
+    resource: "@SystemUserBundle/Controller/"
     type:     annotation
     prefix:   /
 

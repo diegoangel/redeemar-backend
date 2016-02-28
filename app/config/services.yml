@@ -6,19 +6,7 @@ parameters:
 services:
       fos_user.doctrine_registry:
         alias: doctrine
-
-      app.menu_builder:
-        class: AppBundle\DependencyInjection\Menu\MenuBuilder
-        arguments: ["@knp_menu.factory"]
-        tags:
-          - { name: knp_menu.menu_builder, method: createMainMenu, alias: main } # The alias is what is used to retrieve the menu
-          - { name: knp_menu.menu_builder, method: createSidebarMenu, alias: sidebar } # Named "sidebar" this time
-
-      app.datatable.offer:
-          class: AppBundle\Datatables\OfferDatatable
-          tags:
-              - { name: sg.datatable.view }
-# ...
+# 
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]

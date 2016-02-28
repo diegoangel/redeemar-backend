@@ -21,7 +21,10 @@ class AppKernel extends Kernel
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             //new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
-            new AppBundle\AppBundle(),
+            new SystemUserBundle\SystemUserBundle(),
+            new RedeemarUserBundle\RedeemarUserBundle(),
+            new OwnerUserBundle\OwnerUserBundle(),
+            new HomeBundle\HomeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

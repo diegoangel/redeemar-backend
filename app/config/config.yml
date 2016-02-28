@@ -2,7 +2,10 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@AppBundle/Resources/config/services.yml" }
+    - { resource: "@SystemUserBundle/Resources/config/services.yml" }
+    - { resource: "@RedeemarUserBundle/Resources/config/services.yml" }
+    - { resource: "@OwnerUserBundle/Resources/config/services.yml" }
+    - { resource: "@HomeBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -59,7 +62,14 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        #auto_mapping: true
+        mappings:
+            Redeemar:
+                type: annotation
+                is_bundle: false
+                dir: %kernel.root_dir%/../src/Entity
+                prefix: Redeemar\Entity
+                alias: Redeemar     
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -72,7 +82,7 @@ swiftmailer:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: Redeemar\Entity\User
     from_email: 
         address:     noreply@redeemar.com
         sender_name:    "New Redeemar Registration"
