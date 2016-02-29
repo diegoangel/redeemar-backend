@@ -17,6 +17,8 @@
             </div> 
         </div>
         {% include 'OwnerUserBundle:shared:flash_message.html.twig' %}
+        
+        {{ datatable_render(datatable) }}        
     </div>
 {% endblock %}
 

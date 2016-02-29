@@ -45,8 +45,6 @@ class MenuBuilder implements ContainerAwareInterface
         $menu->addChild('Payment and Invoice', ['route' => 'owner_invoice_index']);
         $menu->addChild('Validation Users', ['route' => 'owner_validatoruser_index']);
 
-dump($session = $this->container->get('session'));
-
         return $menu;
     }    
 }
