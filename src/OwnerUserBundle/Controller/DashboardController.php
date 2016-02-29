@@ -15,7 +15,7 @@ class DashboardController extends Controller
      * @Route("/", name="owner_dashboard")
      */
     public function indexAction(Request $request)
-    {      
+    {
         $datatable = $this->get('app.datatable.dashboard');
         $datatable->buildDatatable();
 
