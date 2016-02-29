@@ -22,7 +22,7 @@ class OfferDatatable extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('owner_offer_new'),
+                    'route' => $this->router->generate('system_offer_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     //'role' => 'ROLE_USER',
@@ -55,7 +55,7 @@ class OfferDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('owner_offer_results'),
+            'url' => $this->router->generate('system_offer_results'),
             'type' => 'GET'
         ));
 
@@ -143,7 +143,7 @@ class OfferDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'owner_offer_show',
+                        'route' => 'system_offer_show',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -157,7 +157,7 @@ class OfferDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'owner_offer_edit',
+                        'route' => 'system_offer_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -188,6 +188,6 @@ class OfferDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'offer_datatable';
+        return 'system_offer_datatable';
     }
 }

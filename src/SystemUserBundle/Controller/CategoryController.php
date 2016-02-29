@@ -12,7 +12,7 @@ use SystemUserBundle\Form\CategoryType;
 /**
  * Category controller.
  *
- * @Route("/system/category")
+ * @Route("/category")
  */
 class CategoryController extends Controller
 {
@@ -92,7 +92,7 @@ class CategoryController extends Controller
             $em->persist($category);
             $em->flush();
 
-            return $this->redirectToRoute('category_edit', array('id' => $category->getId()));
+            return $this->redirectToRoute('system_category_edit', array('id' => $category->getId()));
         }
 
         return $this->render('SystemUserBundle:Category:edit.html.twig', array(

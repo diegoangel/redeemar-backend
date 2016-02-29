@@ -12,7 +12,7 @@ use OwnerUserBundle\Form\ValidatorUserType;
 /**
  * ValidatorUser controller.
  *
- * @Route("/owner/validatoruser")
+ * @Route("/validatoruser")
  */
 class ValidatorUserController extends Controller
 {

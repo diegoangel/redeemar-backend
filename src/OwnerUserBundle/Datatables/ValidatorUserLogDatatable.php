@@ -22,7 +22,7 @@ class ValidatorUserLogDatatable extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('validatoruserlog_new'),
+                    'route' => $this->router->generate('owner_validatoruserlog_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     //'role' => 'ROLE_USER',
@@ -55,7 +55,7 @@ class ValidatorUserLogDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('validatoruserlog_results'),
+            'url' => $this->router->generate('owner_validatoruserlog_results'),
             'type' => 'GET'
         ));
 
@@ -104,7 +104,7 @@ class ValidatorUserLogDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'validatoruserlog_show',
+                        'route' => 'owner_validatoruserlog_show',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -118,7 +118,7 @@ class ValidatorUserLogDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'validatoruserlog_edit',
+                        'route' => 'owner_validatoruserlog_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -149,6 +149,6 @@ class ValidatorUserLogDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'validatoruserlog_datatable';
+        return 'owner_validatoruserlog_datatable';
     }
 }

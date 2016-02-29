@@ -22,7 +22,7 @@ class LogoDatatable extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('logo_new'),
+                    'route' => $this->router->generate('system_logo_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     //'role' => 'ROLE_USER',
@@ -55,7 +55,7 @@ class LogoDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('logo_results'),
+            'url' => $this->router->generate('system_logo_results'),
             'type' => 'GET'
         ));
 
@@ -113,7 +113,7 @@ class LogoDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'logo_show',
+                        'route' => 'system_logo_show',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -127,7 +127,7 @@ class LogoDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'logo_edit',
+                        'route' => 'system_logo_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -158,6 +158,6 @@ class LogoDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'logo_datatable';
+        return 'system_logo_datatable';
     }
 }

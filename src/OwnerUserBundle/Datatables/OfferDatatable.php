@@ -188,6 +188,6 @@ class OfferDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'offer_datatable';
+        return 'owner_offer_datatable';
     }
 }

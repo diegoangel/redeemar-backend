@@ -22,7 +22,7 @@ class InvoiceDatatable extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('invoice_new'),
+                    'route' => $this->router->generate('redeemar_invoice_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     //'role' => 'ROLE_USER',
@@ -55,7 +55,7 @@ class InvoiceDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('invoice_results'),
+            'url' => $this->router->generate('redeemar_invoice_results'),
             'type' => 'GET'
         ));
 
@@ -107,7 +107,7 @@ class InvoiceDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'invoice_show',
+                        'route' => 'redeemar_invoice_show',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -121,7 +121,7 @@ class InvoiceDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'invoice_edit',
+                        'route' => 'redeemar_invoice_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -152,6 +152,6 @@ class InvoiceDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'invoice_datatable';
+        return 'redeemar_invoice_datatable';
     }
 }

@@ -22,7 +22,7 @@ class CampaignDatatable extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('campaign_new'),
+                    'route' => $this->router->generate('owner_company_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     //'role' => 'ROLE_USER',
@@ -55,7 +55,7 @@ class CampaignDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('campaign_results'),
+            'url' => $this->router->generate('owner_company_results'),
             'type' => 'GET'
         ));
 
@@ -119,7 +119,7 @@ class CampaignDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'campaign_show',
+                        'route' => 'owner_company_show',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -133,7 +133,7 @@ class CampaignDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'campaign_edit',
+                        'route' => 'owner_company_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -164,6 +164,6 @@ class CampaignDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'campaign_datatable';
+        return 'owner_company_datatable';
     }
 }

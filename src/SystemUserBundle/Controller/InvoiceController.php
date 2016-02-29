@@ -1,13 +1,13 @@
 <?php
 
-namespace OwnerUserBundle\Controller;
+namespace SystemUserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Redeemar\Entity\Invoice;
-use OwnerUserBundle\Form\InvoiceType;
+use SystemUserBundle\Form\InvoiceType;
 
 /**
  * Invoice controller.
@@ -19,7 +19,7 @@ class InvoiceController extends Controller
     /**
      * Lists all Invoice entities.
      *
-     * @Route("/", name="owner_invoice_index")
+     * @Route("/", name="system_invoice_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class InvoiceController extends Controller
     /**
      * Creates a new Invoice entity.
      *
-     * @Route("/new", name="owner_invoice_new")
+     * @Route("/new", name="system_invoice_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -50,7 +50,7 @@ class InvoiceController extends Controller
             $em->persist($invoice);
             $em->flush();
 
-            return $this->redirectToRoute('owner_invoice_show', array('id' => $invoice->getId()));
+            return $this->redirectToRoute('system_invoice_show', array('id' => $invoice->getId()));
         }
 
         return $this->render('OwnerUserBundle:Invoice:new.html.twig', array(
@@ -62,7 +62,7 @@ class InvoiceController extends Controller
     /**
      * Finds and displays a Invoice entity.
      *
-     * @Route("/{id}", name="owner_invoice_show")
+     * @Route("/{id}", name="system_invoice_show")
      * @Method("GET")
      */
     public function showAction(Invoice $invoice)
@@ -78,7 +78,7 @@ class InvoiceController extends Controller
     /**
      * Displays a form to edit an existing Invoice entity.
      *
-     * @Route("/{id}/edit", name="owner_invoice_edit")
+     * @Route("/{id}/edit", name="system_invoice_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Invoice $invoice)
@@ -92,7 +92,7 @@ class InvoiceController extends Controller
             $em->persist($invoice);
             $em->flush();
 
-            return $this->redirectToRoute('owner_invoice_edit', array('id' => $invoice->getId()));
+            return $this->redirectToRoute('system_invoice_edit', array('id' => $invoice->getId()));
         }
 
         return $this->render('OwnerUserBundle:Invoice:edit.html.twig', array(
@@ -105,7 +105,7 @@ class InvoiceController extends Controller
     /**
      * Deletes a Invoice entity.
      *
-     * @Route("/{id}", name="owner_invoice_delete")
+     * @Route("/{id}", name="system_invoice_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Invoice $invoice)
@@ -119,7 +119,7 @@ class InvoiceController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('owner_invoice_index');
+        return $this->redirectToRoute('system_invoice_index');
     }
 
     /**
@@ -132,7 +132,7 @@ class InvoiceController extends Controller
     private function createDeleteForm(Invoice $invoice)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('owner_invoice_delete', array('id' => $invoice->getId())))
+            ->setAction($this->generateUrl('system_invoice_delete', array('id' => $invoice->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

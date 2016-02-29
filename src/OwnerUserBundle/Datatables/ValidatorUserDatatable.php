@@ -22,7 +22,7 @@ class ValidatorUserDatatable extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('validatoruser_new'),
+                    'route' => $this->router->generate('owner_validatoruser_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     //'role' => 'ROLE_USER',
@@ -55,7 +55,7 @@ class ValidatorUserDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('validatoruser_results'),
+            'url' => $this->router->generate('owner_validatoruser_results'),
             'type' => 'GET'
         ));
 
@@ -125,7 +125,7 @@ class ValidatorUserDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'validatoruser_show',
+                        'route' => 'owner_validatoruser_show',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -139,7 +139,7 @@ class ValidatorUserDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'validatoruser_edit',
+                        'route' => 'owner_validatoruser_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -170,6 +170,6 @@ class ValidatorUserDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'validatoruser_datatable';
+        return 'owner_validatoruser_datatable';
     }
 }

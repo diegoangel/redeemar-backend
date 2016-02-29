@@ -15,16 +15,16 @@
         <tbody>
         {% for logo in logos %}
             <tr>
-                <td><a href="{{ path('logo_show', { 'id': logo.id }) }}">{{ logo.id }}</a></td>
+                <td><a href="{{ path('owner_logo_show', { 'id': logo.id }) }}">{{ logo.id }}</a></td>
                 <td>{{ logo.companyName }}</td>
                 <td>{{ logo.path }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('logo_show', { 'id': logo.id }) }}">show</a>
+                            <a href="{{ path('owner_logo_show', { 'id': logo.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('logo_edit', { 'id': logo.id }) }}">edit</a>
+                            <a href="{{ path('owner_logo_edit', { 'id': logo.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('logo_new') }}">Create a new entry</a>
+            <a href="{{ path('owner_logo_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

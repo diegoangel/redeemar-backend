@@ -30,10 +30,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('invoice_index') }}">Back to the list</a>
+            <a href="{{ path('system_invoice_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('invoice_edit', { 'id': invoice.id }) }}">Edit</a>
+            <a href="{{ path('system_invoice_edit', { 'id': invoice.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

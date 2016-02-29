@@ -9,13 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Redeemar\Entity\Offer;
 use Redeemar\Entity\OfferRepository;
 
-/**
- * @Route("/owner", name="owner")
- */
 class DashboardController extends Controller
 {
     /**
-     * @Route("/dashboard", name="owner_dashboard")
+     * @Route("/", name="owner_dashboard")
      */
     public function indexAction(Request $request)
     {

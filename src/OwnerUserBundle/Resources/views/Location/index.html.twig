@@ -22,7 +22,7 @@
         <tbody>
         {% for location in locations %}
             <tr>
-                <td><a href="{{ path('location_show', { 'id': location.id }) }}">{{ location.id }}</a></td>
+                <td><a href="{{ path('owner_location_show', { 'id': location.id }) }}">{{ location.id }}</a></td>
                 <td>{{ location.name }}</td>
                 <td>{{ location.address }}</td>
                 <td>{{ location.phone }}</td>
@@ -35,10 +35,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('location_show', { 'id': location.id }) }}">show</a>
+                            <a href="{{ path('owner_location_show', { 'id': location.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('location_edit', { 'id': location.id }) }}">edit</a>
+                            <a href="{{ path('owner_location_edit', { 'id': location.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -49,7 +49,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('location_new') }}">Create a new entry</a>
+            <a href="{{ path('owner_location_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

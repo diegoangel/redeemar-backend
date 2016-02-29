@@ -22,7 +22,7 @@ class UserDatatable extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('user_new'),
+                    'route' => $this->router->generate('redeemar_user_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     //'role' => 'ROLE_USER',
@@ -55,7 +55,7 @@ class UserDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('user_results'),
+            'url' => $this->router->generate('redeemar_user_results'),
             'type' => 'GET'
         ));
 
@@ -92,7 +92,7 @@ class UserDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'user_show',
+                        'route' => 'redeemar_user_show',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -106,7 +106,7 @@ class UserDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'user_edit',
+                        'route' => 'redeemar_user_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -137,6 +137,6 @@ class UserDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'user_datatable';
+        return 'redeemar_user_datatable';
     }
 }

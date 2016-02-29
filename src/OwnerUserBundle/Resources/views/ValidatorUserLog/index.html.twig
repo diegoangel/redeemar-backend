@@ -19,7 +19,7 @@
         <tbody>
         {% for validatorUser in validatorUsers %}
             <tr>
-                <td><a href="{{ path('owner_validatoruser_show', { 'id': validatorUser.id }) }}">{{ validatorUser.id }}</a></td>
+                <td><a href="{{ path('owner_validatoruserlog_show', { 'id': validatorUser.id }) }}">{{ validatorUser.id }}</a></td>
                 <td>{{ validatorUser.name }}</td>
                 <td>{{ validatorUser.email }}</td>
                 <td>{{ validatorUser.phone }}</td>
@@ -29,10 +29,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('owner_validatoruser_show', { 'id': validatorUser.id }) }}">show</a>
+                            <a href="{{ path('owner_validatoruserlog_show', { 'id': validatorUser.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('owner_validatoruser_edit', { 'id': validatorUser.id }) }}">edit</a>
+                            <a href="{{ path('owner_validatoruserlog_edit', { 'id': validatorUser.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -43,7 +43,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('owner_validatoruser_new') }}">Create a new entry</a>
+            <a href="{{ path('owner_validatoruserlog_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

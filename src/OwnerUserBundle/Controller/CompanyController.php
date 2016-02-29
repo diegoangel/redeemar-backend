@@ -12,7 +12,7 @@ use Redeemar\Form\CompanyType;
 /**
  * Company controller.
  *
- * @Route("/owner/company")
+ * @Route("/company")
  */
 class CompanyController extends Controller
 {

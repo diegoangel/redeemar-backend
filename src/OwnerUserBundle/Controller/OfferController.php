@@ -13,7 +13,7 @@ use OwnerUserBundle\Form\OfferType;
 /**
  * Offer controller.
  *
- * @Route("/owner/offer")
+ * @Route("/offer")
  */
 class OfferController extends Controller
 {

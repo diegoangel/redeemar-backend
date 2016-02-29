@@ -22,7 +22,7 @@ class LocationDatatable extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('location_new'),
+                    'route' => $this->router->generate('owner_location_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     //'role' => 'ROLE_USER',
@@ -55,7 +55,7 @@ class LocationDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('location_results'),
+            'url' => $this->router->generate('owner_location_results'),
             'type' => 'GET'
         ));
 
@@ -128,7 +128,7 @@ class LocationDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'location_show',
+                        'route' => 'owner_location_show',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -142,7 +142,7 @@ class LocationDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'location_edit',
+                        'route' => 'owner_location_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -173,6 +173,6 @@ class LocationDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'location_datatable';
+        return 'owner_location_datatable';
     }
 }

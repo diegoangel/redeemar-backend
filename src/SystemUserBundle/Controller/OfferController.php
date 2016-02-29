@@ -12,7 +12,7 @@ use SystemUserBundle\Form\OfferType;
 /**
  * Offer controller.
  *
- * @Route("/system/offer")
+ * @Route("/offer")
  */
 class OfferController extends Controller
 {
@@ -28,7 +28,7 @@ class OfferController extends Controller
 
         $offers = $em->getRepository('Redeemar:Offer')->findAll();
 
-        return $this->render('system_offer/index.html.twig', array(
+        return $this->render('offer/index.html.twig', array(
             'offers' => $offers,
         ));
     }

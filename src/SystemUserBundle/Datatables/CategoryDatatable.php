@@ -22,7 +22,7 @@ class CategoryDatatable extends AbstractDatatableView
             'end_html' => '<hr></div></div>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('category_new'),
+                    'route' => $this->router->generate('system_category_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     //'role' => 'ROLE_USER',
@@ -55,7 +55,7 @@ class CategoryDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('category_results'),
+            'url' => $this->router->generate('system_category_results'),
             'type' => 'GET'
         ));
 
@@ -92,7 +92,7 @@ class CategoryDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'category_show',
+                        'route' => 'system_category_show',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -106,7 +106,7 @@ class CategoryDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'category_edit',
+                        'route' => 'system_category_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
@@ -137,6 +137,6 @@ class CategoryDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'category_datatable';
+        return 'system_category_datatable';
     }
 }

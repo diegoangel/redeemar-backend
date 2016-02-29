@@ -13,7 +13,7 @@ use SystemUserBundle\Form\LogoType;
 /**
  * Logo controller.
  *
- * @Route("/system/logo")
+ * @Route("/logo")
  */
 class LogoController extends Controller
 {

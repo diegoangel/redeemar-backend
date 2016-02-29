@@ -6,17 +6,17 @@ home:
 owner_user:
     resource: "@OwnerUserBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /owner
 
 redeemar_user:
     resource: "@RedeemarUserBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /redeemar
 
 system_user:
     resource: "@SystemUserBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /system
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

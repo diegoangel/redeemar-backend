@@ -12,7 +12,7 @@ use OwnerUserBundle\Form\LocationType;
 /**
  * Location controller.
  *
- * @Route("/owner/location")
+ * @Route("/location")
  */
 class LocationController extends Controller
 {
