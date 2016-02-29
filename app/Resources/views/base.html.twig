@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="" />
         <title>{% block title %}Redeemar{% endblock %}</title>
         {% block stylesheets %}
@@ -25,14 +25,6 @@
         <script src="{{ asset('/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-        <!-- // AngularJS dependencies -->
-        <script src="{{ asset('/bower_components/angular/angular.min.js') }}"></script>
-        <script src="{{ asset('/bower_components/angular-animate/angular-animate.min.js') }}"></script>
-        <script src="{{ asset('/bower_components/angular-touch/angular-touch.min.js') }}"></script>
-        <script src="{{ asset('/bower_components/angular-sanitize/angular-sanitize.min.js') }}"></script>
-        <!-- // Project related scripts -->
-        <script src="{{ asset('/bundles/app/scripts/config.js') }}"></script>        
-        <script src="{{ asset('/bundles/app/scripts/app.js') }}"></script>
         {% endblock %}       
     </head>
     <body>
@@ -42,5 +34,15 @@
 
         {% block footer %}{% endblock %}
 
+        {% block angularjs %}
+        <!-- // AngularJS dependencies -->
+        <script src="{{ asset('/bower_components/angular/angular.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/angular-animate/angular-animate.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/angular-touch/angular-touch.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/angular-sanitize/angular-sanitize.min.js') }}"></script>
+        <!-- // Project related scripts -->
+        <script src="{{ asset('/bundles/app/scripts/config.js') }}"></script>        
+        <script src="{{ asset('/bundles/app/scripts/app.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
