@@ -28,7 +28,6 @@ Session.vim
 *.pydevproject
 .project
 .metadata
-bin/**
 tmp/**
 tmp/**/*
 *.tmp
@@ -45,7 +44,6 @@ local.properties
  
 # phpstorm
 .idea/
-.phpidea
  
 # textmate
 *.tmproj
@@ -90,3 +88,6 @@ Icon
 project-info/
 web/bower_components/
 components/
+.phpidea
+!.bowerrc
+!bin/
