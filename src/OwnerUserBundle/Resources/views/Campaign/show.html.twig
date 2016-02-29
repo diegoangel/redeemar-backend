@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Offer</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offer.id }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{% if offer.startDate %}{{ offer.startDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Enddate</th>
+                <td>{% if offer.endDate %}{{ offer.endDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Imagepath</th>
+                <td>{{ offer.imagePath }}</td>
+            </tr>
+            <tr>
+                <th>Prepay</th>
+                <td>{% if offer.prepay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Payonvalidate</th>
+                <td>{% if offer.payOnValidate %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fixedamount</th>
+                <td>{{ offer.fixedAmount }}</td>
+            </tr>
+            <tr>
+                <th>Percentage</th>
+                <td>{{ offer.percentage }}</td>
+            </tr>
+            <tr>
+                <th>Redeemarsforvalidation</th>
+                <td>{{ offer.redeemarsForValidation }}</td>
+            </tr>
+            <tr>
+                <th>Redeemarprice</th>
+                <td>{{ offer.redeemarPrice }}</td>
+            </tr>
+            <tr>
+                <th>Redeemarsused</th>
+                <td>{{ offer.redeemarsUsed }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('owner_campaign_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('owner_campaign_edit', { 'id': offer.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

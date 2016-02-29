@@ -36,6 +36,8 @@
     "font-awesome": "^4.5.0",
     "moment": "^2.11.2",
     "bootstrap-daterangepicker": "^2.1.18",
-    "x-editable": "^1.5.1"
+    "x-editable": "^1.5.1",
+    "Materialize": "materialize#^0.97.5",
+    "metisMenu": "^2.4.0"
   }
 }

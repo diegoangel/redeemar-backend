@@ -31,7 +31,9 @@
         "fzaninotto/faker": "^1.5",
         "stof/doctrine-extensions-bundle": "^1.2",
         "symfony/proxy-manager-bridge": "^2.8",
-        "ocramius/proxy-manager": "~1.0"
+        "ocramius/proxy-manager": "~1.0",
+        "cnerta/breadcrumb-bundle": "^2.1",
+        "symfony/var-dumper": "^2.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

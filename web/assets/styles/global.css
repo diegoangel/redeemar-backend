@@ -2,6 +2,11 @@
  * Start Bootstrap - SB Admin 2 Bootstrap Admin Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ *
+ *  #585858
+ *  #118C4E
+ *   #C1E1A6
+ *  #FF9009
  */
 
 body {
@@ -132,7 +137,7 @@ body {
         z-index: 1;
         position: absolute;
         width: 250px;
-        margin-top: 51px;
+        margin-top: 11px;
     }
 
     .navbar-top-links .dropdown-messages,
@@ -351,4 +356,12 @@ table.dataTable thead .sorting:after {
 
 .panel-yellow a:hover {
     color: #df8a13;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
 }

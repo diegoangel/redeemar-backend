@@ -90,3 +90,7 @@ fos_user:
         confirmation:
             enabled:    true 
             template:   FOSUserBundle:Registration:email.txt.twig
+
+cnerta_breadcrumb:
+    twig:
+        template: CnertaBreadcrumbBundle::cnerta_breadcrumb.html.twig

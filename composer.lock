@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5fdf43499a18fcc253b4244a3f586fb9",
-    "content-hash": "3817a7f0af3a153bb44965f8e03c9e93",
+    "hash": "2e040a59c62b23516dc87227b84dd7e6",
+    "content-hash": "c293642e4857254562651238b02d7318",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -46,6 +46,56 @@
                 "transliterator"
             ],
             "time": "2015-09-28 16:26:35"
+        },
+        {
+            "name": "cnerta/breadcrumb-bundle",
+            "version": "2.1.1",
+            "target-dir": "Cnerta/BreadcrumbBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AgrosupDijon-Eduter/BreadcrumbBundle.git",
+                "reference": "794f782c1a9cc344905a8c56412f17535241c3f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AgrosupDijon-Eduter/BreadcrumbBundle/zipball/794f782c1a9cc344905a8c56412f17535241c3f6",
+                "reference": "794f782c1a9cc344905a8c56412f17535241c3f6",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-menu-bundle": "~2.0",
+                "symfony/framework-bundle": ">2.1"
+            },
+            "require-dev": {
+                "knplabs/knp-menu-bundle": "~2.0",
+                "phpunit/phpunit": "~4.8",
+                "symfony/symfony": "2.7.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Cnerta\\BreadcrumbBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Valérian Girard",
+                    "email": "valerian.girard@educagri.fr",
+                    "homepage": "http://www.cnerta.educagri.fr/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The CnertaBreadcrumbBundle, for Symfony2, provide an easy way to create a breadcrumb with KnpMenuBundle",
+            "keywords": [
+                "Symfony2",
+                "breadcrumbs",
+                "knpmenu"
+            ],
+            "time": "2015-10-21 15:36:21"
         },
         {
             "name": "doctrine/annotations",
@@ -2270,6 +2320,62 @@
             "time": "2015-11-17 10:02:29"
         },
         {
+            "name": "symfony/polyfill-apcu",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-apcu.git",
+                "reference": "d1911e6caeb4b6a4c8e2d5c46b978a66b3745e4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/d1911e6caeb4b6a4c8e2d5c46b978a66b3745e4c",
+                "reference": "d1911e6caeb4b6a4c8e2d5c46b978a66b3745e4c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting apcu_* functions to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "apcu",
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2016-01-20 09:13:37"
+        },
+        {
             "name": "symfony/polyfill-intl-icu",
             "version": "v1.1.0",
             "source": {
@@ -2784,22 +2890,23 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.2",
+            "version": "v2.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "f3e6a82bcbea4db3b56df08e491e20a1faae82b5"
+                "reference": "7a9a5fce7ce6e448e527f635463dda00761e12c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/f3e6a82bcbea4db3b56df08e491e20a1faae82b5",
-                "reference": "f3e6a82bcbea4db3b56df08e491e20a1faae82b5",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/7a9a5fce7ce6e448e527f635463dda00761e12c2",
+                "reference": "7a9a5fce7ce6e448e527f635463dda00761e12c2",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.4",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
+                "symfony/polyfill-apcu": "~1.1",
                 "symfony/polyfill-intl-icu": "~1.0",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php54": "~1.0",
@@ -2868,7 +2975,7 @@
                 "doctrine/orm": "~2.4,>=2.4.5",
                 "egulias/email-validator": "~1.2",
                 "monolog/monolog": "~1.11",
-                "ocramius/proxy-manager": "~0.4|~1.0",
+                "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                 "phpdocumentor/reflection": "^1.0.7"
             },
             "type": "library",
@@ -2913,7 +3020,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-01-14 12:01:11"
+            "time": "2016-02-28 21:06:29"
         },
         {
             "name": "twig/twig",

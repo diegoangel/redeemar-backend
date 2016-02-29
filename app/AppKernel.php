@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Cnerta\BreadcrumbBundle\CnertaBreadcrumbBundle(),
             //new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new SystemUserBundle\SystemUserBundle(),
             new RedeemarUserBundle\RedeemarUserBundle(),

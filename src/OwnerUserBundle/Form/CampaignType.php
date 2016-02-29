@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class OfferType extends AbstractType
+class CampaignType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,20 +15,12 @@ class OfferType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imagePath')
-            ->add('prepay')
-            ->add('payOnValidate')
-            ->add('fixedAmount')
-            ->add('percentage')
-            ->add('redeemarsForValidation')
-            ->add('redeemarPrice')
-            ->add('redeemarsUsed')
-            ->add('active')
+            ->add('name')
             ->add('startDate', 'datetime')
             ->add('endDate', 'datetime')
-            ->add('highlighted')
-            ->add('rating')
-            ->add('campaign')
+            ->add('active')
+            ->add('company')
+            ->add('location')
         ;
     }
     
@@ -38,7 +30,7 @@ class OfferType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Redeemar\Entity\Offer'
+            'data_class' => 'Redeemar\Entity\Campaign'
         ));
     }
 }
