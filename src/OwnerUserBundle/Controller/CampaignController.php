@@ -13,7 +13,7 @@ use OwnerUserBundle\Form\CampaignType;
 /**
  * Campaign controller.
  *
- * @Route("/offer")
+ * @Route("/campaign")
  */
 class CampaignController extends Controller
 {

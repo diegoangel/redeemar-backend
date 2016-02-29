@@ -24,12 +24,16 @@ class LocationController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $locations = $em->getRepository('Redeemar:Location')->findAll();
+        $datatable = $this->get('owner.datatable.location');
+        $datatable->buildDatatable();
+
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $locations = $em->getRepository('Redeemar:Location')->findAll();
 
         return $this->render('OwnerUserBundle:Location:index.html.twig', array(
-            'locations' => $locations,
+            'datatable' => $datatable,
         ));
     }
 

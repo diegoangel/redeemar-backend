@@ -6,11 +6,15 @@ services:
           - { name: knp_menu.menu_builder, method: createMainMenu, alias: main } # The alias is what is used to retrieve the menu
           - { name: knp_menu.menu_builder, method: createSidebarMenu, alias: sidebar } # Named "sidebar" this time
 
-      app.datatable.offer:
+      owner.datatable.offer:
           class: OwnerUserBundle\Datatables\OfferDatatable
           tags:
               - { name: sg.datatable.view }
-      app.datatable.dashboard:
+      owner.datatable.dashboard:
           class: OwnerUserBundle\Datatables\DashboardDatatable
           tags:
-              - { name: sg.datatable.view }              
+              - { name: sg.datatable.view }
+      owner.datatable.location:
+          class: OwnerUserBundle\Datatables\LocationDatatable
+          tags:
+              - { name: sg.datatable.view }

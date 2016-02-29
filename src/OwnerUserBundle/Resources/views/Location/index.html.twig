@@ -1,51 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Location list</h1>
+    <h1>Offer list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Contact</th>
-                <th>Active</th>
-                <th>Longitude</th>
-                <th>Latitude</th>
-                <th>Created</th>
-                <th>Modified</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for location in locations %}
-            <tr>
-                <td><a href="{{ path('owner_location_show', { 'id': location.id }) }}">{{ location.id }}</a></td>
-                <td>{{ location.name }}</td>
-                <td>{{ location.address }}</td>
-                <td>{{ location.phone }}</td>
-                <td>{{ location.contact }}</td>
-                <td>{% if location.active %}Yes{% else %}No{% endif %}</td>
-                <td>{{ location.longitude }}</td>
-                <td>{{ location.latitude }}</td>
-                <td>{% if location.created %}{{ location.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if location.modified %}{{ location.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('owner_location_show', { 'id': location.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('owner_location_edit', { 'id': location.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {{ datatable_render(datatable) }}
+
+
 
     <ul>
         <li>

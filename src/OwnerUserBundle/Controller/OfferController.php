@@ -25,7 +25,7 @@ class OfferController extends Controller
      */
     public function indexAction()
     {
-        $datatable = $this->get('app.datatable.offer');
+        $datatable = $this->get('owner.datatable.offer');
         $datatable->buildDatatable();
 
         return $this->render('OwnerUserBundle:Offer:index.html.twig', array(
@@ -40,7 +40,7 @@ class OfferController extends Controller
      */
     public function indexResultsAction()
     {
-        $datatable = $this->get('app.datatable.offer');
+        $datatable = $this->get('owner.datatable.offer');
         $datatable->buildDatatable();
 
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
