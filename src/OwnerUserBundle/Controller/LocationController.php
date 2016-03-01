@@ -77,7 +77,7 @@ class LocationController extends Controller
     /**
      * Finds and displays a Location entity.
      *
-     * @Route("/{id}", name="owner_location_show")
+     * @Route("/{id}", name="owner_location_show", options={"expose"=true})
      * @Method("GET")
      */
     public function showAction(Location $location)
@@ -93,7 +93,7 @@ class LocationController extends Controller
     /**
      * Displays a form to edit an existing Location entity.
      *
-     * @Route("/{id}/edit", name="owner_location_edit")
+     * @Route("/{id}/edit", name="owner_location_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Location $location)
