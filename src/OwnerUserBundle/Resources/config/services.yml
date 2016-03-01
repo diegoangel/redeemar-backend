@@ -10,10 +10,12 @@ services:
           class: OwnerUserBundle\Datatables\OfferDatatable
           tags:
               - { name: sg.datatable.view }
+
       owner.datatable.dashboard:
           class: OwnerUserBundle\Datatables\DashboardDatatable
           tags:
               - { name: sg.datatable.view }
+
       owner.datatable.location:
           class: OwnerUserBundle\Datatables\LocationDatatable
           tags:

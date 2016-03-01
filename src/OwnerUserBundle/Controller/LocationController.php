@@ -28,13 +28,24 @@ class LocationController extends Controller
         $datatable = $this->get('owner.datatable.location');
         $datatable->buildDatatable();
 
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $locations = $em->getRepository('Redeemar:Location')->findAll();
-
         return $this->render('OwnerUserBundle:Location:index.html.twig', array(
             'datatable' => $datatable,
         ));
+    }
+
+    /**
+     * @Route("/results", name="owner_location_results")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexResultsAction()
+    {
+        $datatable = $this->get('owner.datatable.location');
+        $datatable->buildDatatable();
+
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
 
     /**

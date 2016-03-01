@@ -14,14 +14,14 @@ class DashboardController extends Controller
     /**
      * @Route("/", name="owner_dashboard")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $datatable = $this->get('owner.datatable.dashboard');
         $datatable->buildDatatable();
 
         return $this->render('OwnerUserBundle:Dashboard:index.html.twig', array(
-            'datatable' => $datatable,
-        ));        
+            'datatable' => $datatable
+        ));
     }
     
     /**
