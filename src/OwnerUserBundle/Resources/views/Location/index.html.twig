@@ -1,15 +1,27 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    {% include 'OwnerUserBundle:shared:header.html.twig' %}
+{% endblock %}
+
 {% block body %}
-    <h1>Locations</h1>
+    <div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">Locations</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            {{ cnerta_breadcrumb_render('sidebar', {'template': 'OwnerUserBundle:shared:breadcrumb.html.twig'}) }}
+        </div>
+    </div>
+    {% include 'OwnerUserBundle:shared:flash_message.html.twig' %}
 
     {{ datatable_render(datatable) }}
 
+{% endblock %}
 
-
-    <ul>
-        <li>
-            <a href="{{ path('owner_location_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+{% block footer %}
+    {% include 'OwnerUserBundle:shared:footer.html.twig' %}
 {% endblock %}

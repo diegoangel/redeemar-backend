@@ -51,7 +51,17 @@ class LocationDatatable extends AbstractDatatableView
             'server_side' => true,
             'state_save' => false,
             'delay' => 0,
-            'extensions' => array()
+            'extensions' => array(
+                'checkbox' =>
+                    array(
+                        'excel',
+                        'pdf',
+                        array(
+                            'text' => 'Reload'
+                        )
+                    ),
+                'responsive' => true
+            )
         ));
 
         $this->ajax->set(array(
@@ -97,62 +107,31 @@ class LocationDatatable extends AbstractDatatableView
             ->add('contact', 'column', array(
                 'title' => 'Contact',
             ))
-            ->add('active', 'boolean', array(
-                'title' => 'Active',
-            ))
-            ->add('longitude', 'column', array(
-                'title' => 'Longitude',
-            ))
-            ->add('latitude', 'column', array(
-                'title' => 'Latitude',
-            ))
-            ->add('company.id', 'column', array(
-                'title' => 'Company Id',
-            ))
-            ->add('company.name', 'column', array(
-                'title' => 'Company Name',
-            ))
-            ->add('company.website', 'column', array(
-                'title' => 'Company Website',
-            ))
-            ->add('company.description', 'column', array(
-                'title' => 'Company Description',
-            ))
-            ->add('company.address', 'column', array(
-                'title' => 'Company Address',
-            ))
-            ->add('company.video', 'column', array(
-                'title' => 'Company Video',
-            ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
-                    array(
-                        'route' => 'owner_location_show',
-                        'route_parameters' => array(
-                            'id' => 'id'
-                        ),
-                        'label' => $this->translator->trans('datatables.actions.show'),
-                        'icon' => 'glyphicon glyphicon-eye-open',
-                        'attributes' => array(
-                            'rel' => 'tooltip',
-                            'title' => $this->translator->trans('datatables.actions.show'),
-                            'class' => 'btn btn-primary btn-xs',
-                            'role' => 'button'
-                        ),
-                    ),
                     array(
                         'route' => 'owner_location_edit',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
-                        'label' => $this->translator->trans('datatables.actions.edit'),
-                        'icon' => 'glyphicon glyphicon-edit',
+                        'icon' => 'glyphicon glyphicon-pencil',
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.edit'),
-                            'class' => 'btn btn-primary btn-xs',
-                            'role' => 'button'
+                            'class' => 'actions-padding',
+                        ),
+                    ),
+                    array(
+                        'route' => 'owner_location_show',
+                        'route_parameters' => array(
+                            'id' => 'id'
+                        ),
+                        'icon' => 'glyphicon glyphicon-remove',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => $this->translator->trans('datatables.actions.show'),
+                            'class' => 'actions-padding',
                         ),
                     )
                 )
