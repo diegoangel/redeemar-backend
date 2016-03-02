@@ -5,6 +5,7 @@ namespace OwnerUserBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use OwnerUserBundle\Form\CategoryType;
 
 class CompanyType extends AbstractType
 {
@@ -21,7 +22,7 @@ class CompanyType extends AbstractType
             ->add('address')
             ->add('video')
             ->add('user')
-            ->add('category')
+            ->add('category', CategoryType::class)
             ->add('logo')
         ;
     }

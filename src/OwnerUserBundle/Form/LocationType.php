@@ -5,6 +5,7 @@ namespace OwnerUserBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use OwnerUserBundle\Form\CompanyType;
 
 class LocationType extends AbstractType
 {
@@ -19,12 +20,9 @@ class LocationType extends AbstractType
             ->add('address')
             ->add('phone')
             ->add('contact')
-            ->add('active')
-            ->add('longitude')
-            ->add('latitude')
-            ->add('created', 'datetime')
-            ->add('modified', 'datetime')
-            ->add('company')
+//            ->add('longitude')
+//            ->add('latitude')
+//            ->add('company', CompanyType::class)
         ;
     }
     

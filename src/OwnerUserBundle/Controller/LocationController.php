@@ -120,7 +120,7 @@ class LocationController extends Controller
     /**
      * Deletes a Location entity.
      *
-     * @Route("/{id}", name="owner_location_delete")
+     * @Route("/{id}", name="owner_location_delete", options={"expose"=true})
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Location $location)

@@ -123,14 +123,16 @@ class LocationDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'owner_location_show',
+                        'route' => 'owner_location_delete',
                         'route_parameters' => array(
                             'id' => 'id'
                         ),
                         'icon' => 'glyphicon glyphicon-remove',
                         'attributes' => array(
                             'rel' => 'tooltip',
-                            'title' => $this->translator->trans('datatables.actions.show'),
+                            'title' => 'Delete',
+                            'confirm' => true,
+                            'confirm_message' => 'Are you sure?',
                             'class' => 'actions-padding',
                         ),
                     )
