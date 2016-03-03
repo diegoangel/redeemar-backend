@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Cnerta\BreadcrumbBundle\CnertaBreadcrumbBundle(),
+            new Widop\HttpAdapterBundle\WidopHttpAdapterBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             //new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new SystemUserBundle\SystemUserBundle(),
             new RedeemarUserBundle\RedeemarUserBundle(),

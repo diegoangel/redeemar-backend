@@ -57,20 +57,34 @@ class LocationController extends Controller
     public function newAction(Request $request)
     {
         $location = new Location();
-        $form = $this->createForm('OwnerUserBundle\Form\LocationType', $location);
+        $form = $this->createForm('OwnerUserBundle\Form\LocationType', $location, array(
+            'action' => $this->generateUrl('owner_location_new')
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $company = $this->getDoctrine()
+                ->getRepository('Redeemar:Company')
+                ->findAll();
+
+            $location->setCompany($company[0]);
+            $geocoder = $this->get('ivory_google_map.geocoder');
+            $geoAdress = $geocoder->geocode($location->getAddress())->getResults();
+            $coordinates = $geoAdress[0]->getGeometry()->getLocation();
+            $location->setLatitude($coordinates->getLatitude());
+            $location->setLongitude($coordinates->getLongitude());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($location);
             $em->flush();
 
-            return $this->redirectToRoute('owner_location_show', array('id' => $location->getId()));
+//            return $this->redirectToRoute('owner_location_show', array('id' => $location->getId()));
         }
 
         return $this->render('OwnerUserBundle:Location:new.html.twig', array(
             'location' => $location,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ));
     }
 

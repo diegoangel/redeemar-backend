@@ -94,4 +94,25 @@ fos_user:
 cnerta_breadcrumb:
     twig:
         template: CnertaBreadcrumbBundle::cnerta_breadcrumb.html.twig
-      
+
+ivory_google_map:
+    map:
+        auto_zoom: false
+        zoom: 3
+        width: "500px"
+        height: "300px"
+
+    directions:
+        enabled: true
+        adapter: "widop_http_adapter.curl"
+        url: "http://maps.googleapis.com/maps/api/directions"
+        https: false
+        format: "json"
+
+    geocoder:
+        enabled: true
+        class: "Ivory\GoogleMap\Services\Geocoding\Geocoder"
+        provider:
+            class: "Ivory\GoogleMap\Services\Geocoding\GeocoderProvider"
+            locale: "en"
+        adapter: "Geocoder\HttpAdapter\BuzzHttpAdapter"
