@@ -105,7 +105,7 @@ class LocationDatatable extends AbstractDatatableView
                 'title' => 'Phone',
             ))
             ->add('contact', 'column', array(
-                'title' => 'Contact',
+                'title' => 'Contact Name',
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),

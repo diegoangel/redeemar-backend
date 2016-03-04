@@ -69,17 +69,14 @@ class LocationController extends Controller
                 ->findAll();
 
             $location->setCompany($company[0]);
-            $geocoder = $this->get('ivory_google_map.geocoder');
-            $geoAdress = $geocoder->geocode($location->getAddress())->getResults();
-            $coordinates = $geoAdress[0]->getGeometry()->getLocation();
-            $location->setLatitude($coordinates->getLatitude());
-            $location->setLongitude($coordinates->getLongitude());
+
+            $this->getCoordinates($location);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($location);
             $em->flush();
 
-//            return $this->redirectToRoute('owner_location_show', array('id' => $location->getId()));
+            return $this->redirectToRoute('owner_location_index');
         }
 
         return $this->render('OwnerUserBundle:Location:new.html.twig', array(
@@ -110,10 +107,15 @@ class LocationController extends Controller
      * @Route("/{id}/edit", name="owner_location_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Location $location)
+    public function editAction(Request $request)
     {
-        $deleteForm = $this->createDeleteForm($location);
-        $editForm = $this->createForm('OwnerUserBundle\Form\LocationType', $location);
+
+        $location = $this->getDoctrine()->getRepository('Redeemar:Location')->find($request->get('id'));
+        $editForm = $this->createForm('OwnerUserBundle\Form\LocationType', $location, array(
+            'action' => $this->generateUrl('owner_location_edit', array(
+                'id'=> $location->getId()
+            ))
+        ));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -121,33 +123,27 @@ class LocationController extends Controller
             $em->persist($location);
             $em->flush();
 
-            return $this->redirectToRoute('owner_location_edit', array('id' => $location->getId()));
+            return $this->redirectToRoute('owner_location_index');
         }
 
-        return $this->render('OwnerUserBundle:Location:edit.html.twig', array(
+        return $this->render('OwnerUserBundle:Location:new.html.twig', array(
             'location' => $location,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'form' => $editForm->createView(),
         ));
     }
 
     /**
      * Deletes a Location entity.
      *
-     * @Route("/{id}", name="owner_location_delete", options={"expose"=true})
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="owner_location_delete", options={"expose"=true})
+     * @Method("GET")
      */
-    public function deleteAction(Request $request, Location $location)
+    public function deleteAction(Request $request)
     {
-        $form = $this->createDeleteForm($location);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($location);
-            $em->flush();
-        }
-
+        $location = $this->getDoctrine()->getRepository('Redeemar:Location')->find($request->get('id'));
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($location);
+        $em->flush();
         return $this->redirectToRoute('owner_location_index');
     }
 
@@ -165,5 +161,13 @@ class LocationController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function getCoordinates(Location $location){
+        $geocoder = $this->get('ivory_google_map.geocoder');
+        $geoAdress = $geocoder->geocode($location->getAddress())->getResults();
+        $coordinates = $geoAdress[0]->getGeometry()->getLocation();
+        $location->setLatitude($coordinates->getLatitude());
+        $location->setLongitude($coordinates->getLongitude());
     }
 }
