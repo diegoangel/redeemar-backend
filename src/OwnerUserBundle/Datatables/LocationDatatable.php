@@ -85,8 +85,8 @@ class LocationDatatable extends AbstractDatatableView
             'state_duration' => 7200,
             'stripe_classes' => array(),
             'class' => Style::BOOTSTRAP_3_STYLE,
-            'individual_filtering' => false,
-            'individual_filtering_position' => 'foot',
+            'individual_filtering' => true,
+            'individual_filtering_position' => 'head',
             'use_integration_options' => true,
             'force_dom' => false
         ));
@@ -94,6 +94,7 @@ class LocationDatatable extends AbstractDatatableView
         $this->columnBuilder
             ->add('id', 'column', array(
                 'title' => 'Id',
+                'visible' => false
             ))
             ->add('name', 'column', array(
                 'title' => 'Name',
@@ -106,6 +107,14 @@ class LocationDatatable extends AbstractDatatableView
             ))
             ->add('contact', 'column', array(
                 'title' => 'Contact Name',
+            ))
+            ->add('active', 'boolean', array(
+                'title' => 'Active',
+                'filter_type' => 'select',
+                'filter_options' => array('' => 'All', '0' => 'Inactive', '1' => 'Active'),
+                'filter_property' => 'active',
+                'true_label' => 'Yes',
+                'false_label' => 'No'
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),

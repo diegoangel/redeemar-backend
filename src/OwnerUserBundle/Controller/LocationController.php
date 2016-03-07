@@ -61,6 +61,7 @@ class LocationController extends Controller
             'action' => $this->generateUrl('owner_location_new')
         ));
         $form->handleRequest($request);
+        $map = $this->get('ivory_google_map.map');
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -81,7 +82,8 @@ class LocationController extends Controller
 
         return $this->render('OwnerUserBundle:Location:new.html.twig', array(
             'location' => $location,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'map' => $map
         ));
     }
 
@@ -117,6 +119,7 @@ class LocationController extends Controller
             ))
         ));
         $editForm->handleRequest($request);
+        $map = $this->get('ivory_google_map.map');
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -129,6 +132,7 @@ class LocationController extends Controller
         return $this->render('OwnerUserBundle:Location:new.html.twig', array(
             'location' => $location,
             'form' => $editForm->createView(),
+            'map' => $map
         ));
     }
 

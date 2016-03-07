@@ -19,19 +19,25 @@
     {% include 'OwnerUserBundle:shared:flash_message.html.twig' %}
 
     <div class="col-md-12">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <input type="submit" class="btn btn-primary" value="Submit" />
+        <div class="col-md-6">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="button" id="submitForm" class="btn btn-primary" value="Submit" />
+                </div>
             </div>
+            {{ form_end(form) }}
         </div>
-        {{ form_end(form) }}
+        <div class="col-md-6">
+            {{ google_map_container(map) }}
+        </div>
     </div>
 
 
 {% endblock %}
 
 {% block footer %}
+    <script src="{{ asset('/bundles/owneruser/scripts/map.js') }}"></script>
     {% include 'OwnerUserBundle:shared:footer.html.twig' %}
 {% endblock %}
