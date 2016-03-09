@@ -77,6 +77,11 @@ class LocationController extends Controller
             $em->persist($location);
             $em->flush();
 
+            $this->addFlash(
+                'notice',
+                'New Location created!'
+            );
+
             return $this->redirectToRoute('owner_location_index');
         }
 
@@ -125,6 +130,11 @@ class LocationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($location);
             $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Your changes were saved!'
+            );
 
             return $this->redirectToRoute('owner_location_index');
         }
